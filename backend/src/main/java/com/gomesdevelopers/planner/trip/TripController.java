@@ -1,8 +1,6 @@
 package com.gomesdevelopers.planner.trip;
 
-import com.gomesdevelopers.planner.participant.ParticipantCreateResponse;
-import com.gomesdevelopers.planner.participant.ParticipantRequestPayload;
-import com.gomesdevelopers.planner.participant.ParticipantService;
+import com.gomesdevelopers.planner.participant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +85,13 @@ public class TripController {
             return ResponseEntity.ok(participantResponse);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{id}/participants")
+    public ResponseEntity<List<ParticipantData>> getAllParticipants(@PathVariable UUID id){
+        List<ParticipantData> participantsList = this.participantService.getAllParticipantsFromEvent(id);
+
+        return ResponseEntity.ok(participantsList);
     }
 
 
