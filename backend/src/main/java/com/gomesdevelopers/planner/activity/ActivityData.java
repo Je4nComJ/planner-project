@@ -1,4 +1,4 @@
-package com.gomesdevelopers.planner.activities;
+package com.gomesdevelopers.planner.activity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

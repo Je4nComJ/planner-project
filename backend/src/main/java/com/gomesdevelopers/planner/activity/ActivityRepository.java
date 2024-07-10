@@ -1,4 +1,4 @@
-package com.gomesdevelopers.planner.activities;
+package com.gomesdevelopers.planner.activity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

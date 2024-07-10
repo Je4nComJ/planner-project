@@ -1,4 +1,4 @@
-package com.gomesdevelopers.planner.activities;
+package com.gomesdevelopers.planner.activity;
 
 import java.util.UUID;
 

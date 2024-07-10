@@ -1,9 +1,9 @@
 package com.gomesdevelopers.planner.trip;
 
-import com.gomesdevelopers.planner.activities.ActivityData;
-import com.gomesdevelopers.planner.activities.ActivityRequestPayload;
-import com.gomesdevelopers.planner.activities.ActivityResponse;
-import com.gomesdevelopers.planner.activities.ActivityService;
+import com.gomesdevelopers.planner.activity.ActivityData;
+import com.gomesdevelopers.planner.activity.ActivityRequestPayload;
+import com.gomesdevelopers.planner.activity.ActivityResponse;
+import com.gomesdevelopers.planner.activity.ActivityService;
 import com.gomesdevelopers.planner.participant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
