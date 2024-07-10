@@ -1,5 +1,9 @@
 package com.gomesdevelopers.planner.trip;
 
+import com.gomesdevelopers.planner.activities.ActivityData;
+import com.gomesdevelopers.planner.activities.ActivityRequestPayload;
+import com.gomesdevelopers.planner.activities.ActivityResponse;
+import com.gomesdevelopers.planner.activities.ActivityService;
 import com.gomesdevelopers.planner.participant.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +25,9 @@ public class TripController {
 
     @Autowired
     private TripRepository repository;
+
+    @Autowired
+    private ActivityService activityService;
 
     @PostMapping
     public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequestPayload payload) {
@@ -93,6 +100,29 @@ public class TripController {
 
         return ResponseEntity.ok(participantsList);
     }
+
+    @PostMapping("/{id}/activities")
+    public ResponseEntity<ActivityResponse> registerActivity (@PathVariable UUID id, @RequestBody ActivityRequestPayload payload){
+
+        Optional<Trip> trip = this.repository.findById(id);
+        if(trip.isPresent()){
+            Trip rawTrip = trip.get();
+
+            ActivityResponse activityResponse = this.activityService.registerActivity(payload, rawTrip);
+
+
+            return ResponseEntity.ok(activityResponse);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{id}/activities")
+    public ResponseEntity<List<ActivityData>> getAllActivities(@PathVariable UUID id){
+        List<ActivityData> activityDataList = this.activityService.getAllActivitiesFromId(id);
+
+        return ResponseEntity.ok(activityDataList);
+    }
+
 
 
 
